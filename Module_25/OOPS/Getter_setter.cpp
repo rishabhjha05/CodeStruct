@@ -52,9 +52,10 @@ int main()
     getline(cin, email);
     student1.setEmail(email);
 
-    cout << "STUDENT INFORMATION\n";
+    cout << "\n\nSTUDENT INFORMATION\n";
     cout << "Student name : " << student1.name << "\nStudent roll number : " << student1.roll_no;
     cout << "\nStudent mobile number : " << student1.getMob() << "\nStudent email address : " << student1.getEmail();
 
     return 0;
 }
+/*use of getter and setter is to secure the class data member from unwanted access and data breach*/
