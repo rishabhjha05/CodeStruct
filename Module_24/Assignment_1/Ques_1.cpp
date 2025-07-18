@@ -2,7 +2,7 @@
 Find a to the power b to the power c;
 NOTE the quetion asking for a^(b^c) not (a^b)^c
 a = 2, b = 3, c = 2
-Expected: 2^(3^2)=512
+Expected: 2^(3^2) = 512
 */
 #include <iostream>
 using namespace std;

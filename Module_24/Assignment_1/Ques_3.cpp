@@ -1,4 +1,4 @@
-/*calculate inverse factorial of first 10 natural number
+/*calculate factorial of first 10 natural number
 modulo the result by 10^9 +7*/
 #include <iostream>
 using namespace std;

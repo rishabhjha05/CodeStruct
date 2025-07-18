@@ -1,3 +1,4 @@
+/*Leetcode 650*/
 #include <iostream>
 #include <math.h>
 using namespace std;
@@ -19,8 +20,10 @@ int minSteps(int n)
     int i = 2, hcf, count = 0;
     while (i <= sqrt(n))
     {
-        if (n % i == 0)
+        if (n % i == 0){
             hcf = n / i;
+            break;
+        }
         i++;
     }
     count += n / hcf;
