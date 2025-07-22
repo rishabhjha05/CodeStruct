@@ -61,6 +61,7 @@
     "typeinfo": "cpp",
     "iostream": "cpp",
     "array": "cpp",
-    "string": "cpp"
+    "string": "cpp",
+    "functional": "cpp"
   }
 }

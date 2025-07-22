@@ -16,6 +16,6 @@ int main()
     student std1;
     string mob;
     mob = getMob(std1);
-    cout << "Student 1 mob number : " << mob;
+    cout << "Student mob number : " << mob;
     return 0;
 }
