@@ -25,12 +25,12 @@ public:
 };
 class subtract : public abstractClass
 {
-    float a = 1.3, b = 4.2;
+    float a = 2.8, b = 6.3;
     float calculate() { return this->a - this->b; }
 };
 class multiply : public abstractClass
 {
-    float a = 1.3, b = 4.2;
+    float a = 2.5, b = 9.1;
     float calculate() { return this->a * this->b; }
 };
 int main()

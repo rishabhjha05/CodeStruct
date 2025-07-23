@@ -40,5 +40,14 @@ int main()
     std1.setAge(18); // this will change the age in both object std 1 and std2 hence shallow copy
     cout << "\nName after : " << std2.getName();
     cout << "\nAge after : " << std2.getAge();
+    /*
+    copy constructor 
+    student (student & std1){
+    
+    }
+    pass by value will lead to infinite loop situation were each argument 
+    will make its copy through a another copy constructor so we used pass
+    by reference
+    */
     return 0;
 }

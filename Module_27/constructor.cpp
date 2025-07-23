@@ -1,5 +1,9 @@
 /*whenever a class is made there is inbuilt default function
-to initialize memory for the object made */
+to initialize memory for the object made 
+constructor is a type of function which is default and return the 
+data type of class  
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -42,7 +46,7 @@ public:
 };
 int main()
 {
-    car car1;
+    car car1;//as soon as an object is declared constructor make memory for the object
 
     return 0;
 }

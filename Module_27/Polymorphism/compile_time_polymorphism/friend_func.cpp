@@ -6,7 +6,6 @@ class student
 {
 private:
     string Mob = "+91 8505149869";
-
 public:
     friend string getMob(student &a);
 };

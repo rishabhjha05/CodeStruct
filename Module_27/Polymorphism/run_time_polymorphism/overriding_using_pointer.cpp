@@ -4,7 +4,7 @@ class a
 {
 public:
     int A;
-    virtual void func()
+    virtual void func() // made it virtual so that whenever in future this function is called from its derived function it will use overrided function 
     {
         cout << "Function in class a was this.";
     }

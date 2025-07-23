@@ -88,10 +88,10 @@ int main()
     }
     for (int i = 0; i < n; i++)
     {
-        cout << "\n      " << i + 1 << suffix(i + 1) << " EMPLOYEE\n";
+        cout << "\n       " << i + 1 << suffix(i + 1) << " EMPLOYEE\n";
         emp[i].display();
     }
-    cout << "Average wage is of : " << averageWage(emp);
+    cout << "\n\nAverage wage is of : " << averageWage(emp);
     cout << "\nMax wage is of : " << maxWage(emp);
     return 0;
 }

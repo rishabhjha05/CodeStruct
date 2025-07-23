@@ -38,7 +38,6 @@ public:
 int main()
 {
     Date dt1, dt2; // you cal use constructor to intiate values at once instead of getter and setter
-
     // Date dt1(xx,yy,zz),dt2(xx,yy,zz);
     dt1.setDate(02);
     dt1.setMonth(06);
