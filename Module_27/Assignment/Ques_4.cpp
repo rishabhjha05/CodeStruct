@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <limits.h>
+#include <limits>
+#include <math.h>
 using namespace std;
 
 string suffix(int n)
@@ -21,16 +22,15 @@ class Employee
 {
 private:
     string name, employee_id;
-    long long salary;
+    double salary;
 
 public:
-    Employee(string name, string empId, long long salary)
+    Employee(string name, string empId, double salary)
     {
         Employee::name = name;
         employee_id = empId;
         this->salary = salary;
     }
-
     string getName()
     {
         return name;
@@ -39,7 +39,7 @@ public:
     {
         return employee_id;
     }
-    long long getSalary()
+    double getSalary()
     {
         return salary;
     }
@@ -58,25 +58,24 @@ double averageWage(vector<Employee> ep)
         totalWage += ep[i].getSalary();
     return totalWage / n;
 }
-double averageWage(vector<Employee> ep)
+double maxWage(vector<Employee> ep)
 {
-    maxWage = INT_MIN;
-
+    double n = ep.size(), maxWage = __DBL_MIN__;
     for (int i = 0; i < n; i++)
-        totalWage += ep[i].getSalary();
-    return totalWage / n;
+        maxWage = max(maxWage, ep[i].getSalary());
+    return maxWage;
 }
-
 int main()
 {
     vector<Employee> emp;
     int n;
     cout << "Enter number of employee : ";
     cin >> n;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     for (int i = 0; i < n; i++)
     {
         string name, empId;
-        long long salary;
+        double salary;
         cout << "Enter name of " << i + 1 << suffix(i + 1) << " Employee : ";
         getline(cin, name);
         cout << "Enter his employee id : ";
@@ -85,7 +84,14 @@ int main()
         cin >> salary;
         Employee ep(name, empId, salary);
         emp.push_back(ep);
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\n      " << i + 1 << suffix(i + 1) << " EMPLOYEE\n";
+        emp[i].display();
+    }
+    cout << "Average wage is of : " << averageWage(emp);
+    cout << "\nMax wage is of : " << maxWage(emp);
     return 0;
 }
