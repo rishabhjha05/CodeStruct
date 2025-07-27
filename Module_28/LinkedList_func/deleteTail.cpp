@@ -82,6 +82,7 @@ public:
         while (temp->next != tail)
             temp = temp->next;
         temp->next = NULL;
+        tail = temp;
         size--;
         return;
     }
@@ -99,6 +100,5 @@ int main()
     ll.deleteTail();
     cout << "Linked list after deleting the tail is : ";
     ll.display();
-
     return 0;
 }

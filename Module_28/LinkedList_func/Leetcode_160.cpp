@@ -1,22 +1,29 @@
 #include <iostream>
 using namespace std;
 
-class Node
+class ListNode
 {
 public:
     int val;
-    Node *next;
-    Node(int val)
-    {
-        Node::val = val;
-        Node::next = NULL;
-    }
+    ListNode *next;
+    ListNode(int val) : val(val), next(NULL) {}
 };
+int length(ListNode *head)
+{
+    ListNode *temp = head;
+    int size = 0;
+    while (temp != NULL)
+    {
+        size++;
+        temp = temp->next;
+    }
+    return size;
+}
 class linkedlist
 {
 public:
-    Node *head, *tail;
     int size;
+    ListNode *head, *tail;
     linkedlist()
     {
         head = tail = NULL;
@@ -24,7 +31,7 @@ public:
     }
     void display()
     {
-        Node *temp = head;
+        ListNode *temp = head;
         while (temp != NULL)
         {
             cout << temp->val << " ";
@@ -33,10 +40,9 @@ public:
         cout << endl;
         return;
     }
-
     void addAtHead(int val)
     {
-        Node *temp = new Node(val);
+        ListNode *temp = new ListNode(val);
         if (size != 0)
         {
             temp->next = head;
@@ -49,7 +55,7 @@ public:
     }
     void addAtTail(int val)
     {
-        Node *temp = new Node(val);
+        ListNode *temp = new ListNode(val);
         if (size != 0)
         {
             tail->next = temp;
@@ -60,7 +66,6 @@ public:
         size++;
         return;
     }
-
     void insert(int idx, int val)
     {
         if (idx < 0 || idx > size)
@@ -71,8 +76,8 @@ public:
             addAtTail(val);
         else
         {
-            Node *temp = head;
-            Node *temp2 = new Node(val);
+            ListNode *temp = head;
+            ListNode *temp2 = new ListNode(val);
             for (int i = 1; i < idx; i++)
                 temp = temp->next;
             temp2->next = temp->next;
@@ -82,16 +87,42 @@ public:
         return;
     }
 };
+
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+{
+    int sizeA = length(headA), sizeB = length(headB);
+    if (sizeA > sizeB)
+    {
+        ListNode *tempA = headA, *tempB = headB;
+        int n = sizeA - sizeB;
+        for (int i = 1; i <= n; i++)
+            tempA = tempA->next;
+        while (tempA != tempB)
+        {
+            tempA = tempA->next;
+            tempB = tempB->next;
+        }
+        return tempA;
+    }
+    else
+    {
+
+        ListNode *tempA = headA, *tempB = headB;
+        int n = sizeB - sizeA;
+        for (int i = 1; i <= n; i++)
+            tempB = tempB->next;
+        while (tempA != tempB)
+        {
+
+            tempA = tempA->next;
+            tempB = tempB->next;
+        }
+        return tempA;
+    }
+    return NULL;
+};
 int main()
 {
-    linkedlist ll;
-    ll.addAtHead(30);
-    ll.addAtHead(10);
-    ll.display();
-    ll.addAtTail(40);
-    ll.display();
-    ll.insert(1, 20);
-    ll.display();
+
     return 0;
 }
-//?

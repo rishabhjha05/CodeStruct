@@ -37,7 +37,7 @@ int main()
     a->next = b;
     b->next = c;
     display(a);
-    addAtTail(a, 54);
+    addAtTail(a, 50);
     display(a);
     return 0;
 }
