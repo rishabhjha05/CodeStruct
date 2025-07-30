@@ -101,7 +101,7 @@ int main()
     }
     cout << "The given list is : ";
     ll.display();
-    cout << "The reverse list is : ";
+    cout << "The reversed list is : ";
     ListNode *temp = reverseList(ll.getHead());
     while (temp)
     {

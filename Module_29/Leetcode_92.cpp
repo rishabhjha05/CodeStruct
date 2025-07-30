@@ -31,6 +31,7 @@ public:
         head = tail = NULL;
         size = 0;
     }
+
     void display()
     {
         ListNode *temp = head;
@@ -60,14 +61,52 @@ ListNode *reverseList(ListNode *head)
 {
     if (head == NULL || head->next == NULL)
         return head;
-    ListNode *head2 = reverseList(head->next);
-    head->next->next = head;
+    ListNode *prev = head, *curr = prev->next, *Next = curr->next;
+    while (Next)
+    {
+        curr->next = prev;
+        prev = curr;
+        curr = Next;
+        Next = Next->next;
+    }
+    curr->next = prev;
     head->next = NULL;
-    return head2;
+    head = curr;
+}
+ListNode *revreseBetween(ListNode *head, int left, int right)
+{
+    if (left == right || head->next == NULL)
+        return head;
+    ListNode *a = NULL, *b = NULL, *c = NULL, *d = NULL;
+    ListNode *temp = head;
+    int n = 0;
+    while (temp)
+    {
+        if (n == left - 1)
+            a = temp;
+        if (n == left)
+            b = temp;
+        if (n == right)
+            c = temp;
+        if (n == right + 1)
+            d = temp;
+        n++;
+        temp = temp->next;
+    }
+    if (a)
+        a->next = NULL;
+    c->next = NULL;
+    c = reverseList(b);
+    if (a)
+        a->next = c;
+    b->next = d;
+    if (a = NULL)
+        return c;
+    return head;
 }
 int main()
 {
-    int n;
+    int n, k, l;
     cout << "Enter the size of list : ";
     cin >> n;
     linkedlist ll;
@@ -79,15 +118,18 @@ int main()
         cin >> val;
         ll.addAttail(val);
     }
+    cout << "Enter the starting index : ";
+    cin >> k;
+    cout << "Enter the ending index : ";
+    cin >> l;
     cout << "The given list is : ";
     ll.display();
     cout << "The reversed list is : ";
-    ListNode *temp = reverseList(ll.getHead());
+    ListNode *temp = revreseBetween(ll.getHead(), k, l);
     while (temp)
     {
         cout << temp->val << " ";
         temp = temp->next;
     }
-
     return 0;
 }

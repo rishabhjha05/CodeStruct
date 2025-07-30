@@ -60,18 +60,53 @@ ListNode *reverseList(ListNode *head)
 {
     if (head == NULL || head->next == NULL)
         return head;
-    ListNode *head2 = reverseList(head->next);
-    head->next->next = head;
+    ListNode *prev = head, *curr = head->next, *Next = head->next->next;
+    while (Next)
+    {
+        curr->next = prev;
+        prev = curr;
+        curr = Next;
+        Next = Next->next;
+    }
+    curr->next = prev;
     head->next = NULL;
-    return head2;
+    head = curr;
+    return head;
+}
+ListNode *getIdx(ListNode *head, int idx)
+{
+    ListNode *temp = head;
+    for (int i = 1; i <= idx; i++)
+        temp = temp->next;
+    return temp;
+}
+bool isPlaindrome(ListNode *head)
+{
+    ListNode *temp = head;
+    int size = 0;
+    while (temp)
+    {
+        temp = temp->next;
+        size++;
+    }
+
+    int i = 0, j = size - 1;
+    while (i < j)
+    {
+        ListNode *left = getIdx(head, i);
+        ListNode *right = getIdx(head, j);
+        if (left->val != right->val)
+            return false;
+        i++, j--;
+    }
+    return true;
 }
 int main()
 {
+    linkedlist ll;
     int n;
     cout << "Enter the size of list : ";
     cin >> n;
-    linkedlist ll;
-    cout << "Enter all the elements of the list \n";
     for (int i = 0; i < n; i++)
     {
         int val;
@@ -81,13 +116,9 @@ int main()
     }
     cout << "The given list is : ";
     ll.display();
-    cout << "The reversed list is : ";
-    ListNode *temp = reverseList(ll.getHead());
-    while (temp)
-    {
-        cout << temp->val << " ";
-        temp = temp->next;
-    }
-
+    if (isPlaindrome(ll.getHead()))
+        cout << "The given list is a palindrome.";
+    else
+        cout << "The given list is not a palindrome.";
     return 0;
 }
