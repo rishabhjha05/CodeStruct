@@ -11,9 +11,8 @@ public:
         (*this).next = NULL;
     }
 };
-void displayNode(Node *head)
+void displayNode(Node *temp)
 {
-    Node *temp = head;
     while (temp != NULL)
     {
         cout << temp->val << " ";

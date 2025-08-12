@@ -17,6 +17,7 @@ public:
       Node::val = val;
       (*this).next = NULL;
    }
+   //this is a reserved keyword and a pointer to the current class
 };
 int main()
 {
@@ -29,5 +30,6 @@ int main()
    b.next = &c;
    c.next = &d;
    cout << a.val << " " << (a.next)->val << " " << ((*a.next).next)->val << " " << (((a.next)->next)->next)->val;
+   
    return 0;
 }
