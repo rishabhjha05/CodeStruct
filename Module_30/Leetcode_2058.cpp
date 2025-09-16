@@ -78,6 +78,7 @@ vector<int> nodesBetweenCriticalPoints(ListNode *head)
             idx.push_back(i);
         else if (val < temp->val && val < temp->next->next->val)
             idx.push_back(i);
+        temp = temp->next;
     }
     vector<int> ans(2, -1);
     if (idx.size() < 2)
@@ -91,8 +92,8 @@ vector<int> nodesBetweenCriticalPoints(ListNode *head)
             int x = idx[i + 1] - idx[i];
             mindis = min(mindis, x);
         }
-        ans[0] = maxdis;
-        ans[1] = mindis;
+        ans[0] = mindis;
+        ans[1] = maxdis;
     }
     return ans;
 }
@@ -111,7 +112,7 @@ int main()
         ll.addAtTail(val);
     }
     vector<int> vec = nodesBetweenCriticalPoints(ll.getHead());
-    cout<<"The minimum distance between any two critical points are : "<<vec[0];
-    cout<<"The maximum distance between any two critical points are : "<<vec[1];
+    cout << "The minimum distance between any two critical points are : " << vec[0];
+    cout << "The maximum distance between any two critical points are : " << vec[1];
     return 0;
 }
